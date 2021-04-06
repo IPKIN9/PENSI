@@ -5,11 +5,16 @@
         <div class="p-4 m-3">
             <img src="{{ asset('stisla/img/stisla-fill.svg') }}" alt="logo" width="80"
                 class="shadow-light rounded-circle mb-5 mt-2">
-            <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold">Stisla</span>
+            <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold">PENIS</span>
             </h4>
-            <p class="text-muted">Before you get started, you must login or register if you don't already
-                have an account.</p>
-            <form method="POST" action="#" class="needs-validation" novalidate="">
+            <p class="text-muted">Pena Absensi Administrator Application.</p>
+            <form method="POST" action="{{route('auth.check')}}" class="needs-validation" novalidate="">
+                @csrf
+                @if (session('status'))
+                <div class="alert alert-danger">
+                    {{ session('status') }}
+                </div>
+                @endif
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input id="email" type="email" class="form-control" name="email" tabindex="1" required autofocus>
@@ -28,25 +33,10 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" name="remember" class="custom-control-input" tabindex="3"
-                            id="remember-me">
-                        <label class="custom-control-label" for="remember-me">Remember Me</label>
-                    </div>
-                </div>
-
                 <div class="form-group text-right">
-                    <a href="auth-forgot-password.html" class="float-left mt-3">
-                        Forgot Password?
-                    </a>
                     <button type="submit" class="btn btn-primary btn-lg btn-icon icon-right" tabindex="4">
                         Login
                     </button>
-                </div>
-
-                <div class="mt-5 text-center">
-                    Don't have an account? <a href="auth-register.html">Create new one</a>
                 </div>
             </form>
 

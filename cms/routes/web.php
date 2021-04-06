@@ -13,4 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'MyAuth\AuthController@index')->name('Auth.index');
+Route::get('/', 'MyAuth\AuthController@index')->name('login');
+Route::prefix('auth/')->group(function () {
+    Route::get('admin/regist', 'MyAuth\AuthController@register')->name('Auth.Regist');
+    Route::post('admin/add', 'MyAuth\AuthController@store')->name('auth.store');
+    Route::post('admin/check', 'MyAuth\AuthController@authcheck')->name('auth.check');
+    Route::get('admin/logout', 'MyAuth\AuthController@logout')->name('logout');
+});
+Route::prefix('dashboard/')->group(function () {
+    Route::get('home', 'Landing\DsController@index')->name('dashboard.index');
+});
