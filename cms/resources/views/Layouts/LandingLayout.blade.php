@@ -13,7 +13,9 @@
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
     <!-- CSS Libraries -->
-
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+    {{-- Sweet Alert --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.0/dist/sweetalert2.css">
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('stisla/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('stisla/css/components.css') }}">
@@ -45,7 +47,7 @@
                             class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                             <img alt="image" src="{{ asset('stisla/img/avatar/avatar-1.png') }}"
                                 class="rounded-circle mr-1">
-                            <div class="d-sm-none d-lg-inline-block">Hi, Ujang Maman</div>
+                            <div class="d-sm-none d-lg-inline-block text-uppercase">{{session('users')}}</div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <div class="dropdown-title">Logged in 5 min ago</div>
@@ -59,7 +61,7 @@
                                 <i class="fas fa-cog"></i> Settings
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item has-icon text-danger">
+                            <a href="{{route('logout')}}" class="dropdown-item has-icon text-danger">
                                 <i class="fas fa-sign-out-alt"></i> Logout
                             </a>
                         </div>
@@ -78,26 +80,17 @@
                                 <li class="nav-item"><a href="index.html" class="nav-link">Ecommerce Dashboard</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a href="#" class="nav-link"><i class="far fa-heart"></i><span>Top Navigation</span></a>
                         </li>
                         <li class="nav-item dropdown">
                             <a href="#" data-toggle="dropdown" class="nav-link has-dropdown"><i
-                                    class="far fa-clone"></i><span>Multiple Dropdown</span></a>
+                                    class="far fa-clone"></i><span>All Data</span></a>
                             <ul class="dropdown-menu">
-                                <li class="nav-item"><a href="#" class="nav-link">Not Dropdown Link</a></li>
-                                <li class="nav-item dropdown"><a href="#" class="nav-link has-dropdown">Hover Me</a>
+                                <li class="nav-item dropdown"><a href="#" class="nav-link has-dropdown">Input</a>
                                     <ul class="dropdown-menu">
-                                        <li class="nav-item"><a href="#" class="nav-link">Link</a></li>
-                                        <li class="nav-item dropdown"><a href="#" class="nav-link has-dropdown">Link
-                                                2</a>
-                                            <ul class="dropdown-menu">
-                                                <li class="nav-item"><a href="#" class="nav-link">Link</a></li>
-                                                <li class="nav-item"><a href="#" class="nav-link">Link</a></li>
-                                                <li class="nav-item"><a href="#" class="nav-link">Link</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="nav-item"><a href="#" class="nav-link">Link 3</a></li>
+                                        <li class="nav-item"><a href="{{route('generation.index')}}"
+                                                class="nav-link">Generation</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -109,15 +102,6 @@
             <!-- Main Content -->
             <div class="main-content">
                 <section class="section">
-                    <div class="section-header">
-                        <h1>Top Navigation</h1>
-                        <div class="section-header-breadcrumb">
-                            <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                            <div class="breadcrumb-item"><a href="#">Layout</a></div>
-                            <div class="breadcrumb-item">Top Navigation</div>
-                        </div>
-                    </div>
-
                     <div class="section-body">
                         @yield('content')
                     </div>
@@ -146,6 +130,10 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="http://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js" defer></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.7/dist/sweetalert2.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.0/dist/sweetalert2.js"></script>
     <script src="{{ asset('stisla/js/stisla.js') }}"></script>
 
     <!-- JS Libraies -->
@@ -155,6 +143,7 @@
     <!-- Template JS File -->
     <script src="{{ asset('stisla/js/scripts.js') }}"></script>
     <script src="{{ asset('stisla/js/custom.js') }}"></script>
+    @yield('js')
 </body>
 
 </html>

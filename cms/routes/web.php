@@ -22,4 +22,7 @@ Route::prefix('auth/')->group(function () {
 });
 Route::prefix('dashboard/')->group(function () {
     Route::get('home', 'Landing\DsController@index')->name('dashboard.index');
+    Route::get('input/generation', 'Landing\GenerationController@index')->name('generation.index');
+    Route::get('input/generation_ajax', 'Landing\GenerationController@ajax')->name('generation.ajax');
+    Route::post('input/generation_store', 'Landing\GenerationController@store')->name('generation.store');
 });
